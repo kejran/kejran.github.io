@@ -5,7 +5,7 @@ date:   2022-08-12 17:30:00 +0200
 categories: 3ds
 ---
 
-This is part 1 of the [Nintendo 3DS Homebrew series.]({% post_url 2022-08-12-3ds-intro %})
+This is part one of the [Nintendo 3DS Homebrew series.]({% post_url 2022-08-12-3ds-intro %})
 
 Here I will go over necessary steps to get the software stack running. Again, this is not a step-by-step guide, but more of an overview.
 
@@ -98,4 +98,6 @@ Personally, I start a HTTP server in my build folder with `python3 -m http.serve
 
 Once you have the package on the SD card, navigate to it in the *Homebrew Launcher* and run it. 
 
-If you ran the template project, you should see a `Hello World` message.  
+If you ran the template project, you should see a `Hello World` message.
+
+[Read on to the next part, where I go over the hardware on all 3DS models.]({% post_url 2022-08-16-3ds-hardware %})
