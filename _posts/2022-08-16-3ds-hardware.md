@@ -17,7 +17,7 @@ There were many, different models released in the console's lifetime. Of most in
 
 Visually, the _New_ consoles can be recognized by the small, secondary analog stick just over the ABXY buttons. The refresh, apart from having additional peripherals, greatly expands the hardware capabilities - two times the CPU cores, three times the CPU clock, and two times the memory of the original release. The only thing not changed is the gpu processing power.
 
-Apart from that, both original and _New_ come in a variety of editions: base 3DS, 2DS lacking the stereoscopy screen, XL with larger screens, and weird combinations of thereof, such as 2ds with large screens or one lacking hinge. All these amount to is presence of the 3D effect, screen size (_not the resolution_), hinge, and battery size.
+Apart from that, both original and _New_ come in a variety of editions: base 3DS, 2DS lacking the stereoscopy screen, XL with larger screens, and weird combinations of thereof, such as 2ds with large screens or one lacking hinge. All these amount to is presence of the 3D effect, screen size (_not the resolution_), hinge, and battery capacity.
 
 # CPU
 3DS contains two ARM cores:
@@ -43,7 +43,7 @@ The fourth core is permanently tied up in *New 3DS*'s head tracking CV process -
 
 Lastly, the original CPU only has L1 cache. *New* models get additional 2 MiB L2 cache.
 
-ARM11 is, by current standards, getting rather long in the tooth. It is the last architecture of the classic series - before the introduction of the Cortex series. Do not expect NEON extensions, but the basic FPU is there.
+ARM11 is, by current standards, getting rather long in the tooth. It is the last architecture of the classic series - before the introduction of the Cortex series (Same as first Raspberry Pi, for example). Do not expect NEON extensions, but the basic FPU is there.
 
 # Memory
 
@@ -68,9 +68,9 @@ I will not cover things like NAND memory here, as they are not very relevant to 
 
 The 3DS comes with two screens.
 
-**Top screen** at 800x240 with anisotropic pixels, can either emulate a regular 15:9 400x240 screen, a wide-mode 800x240 with double horizontal resolution, or a stereoscopy mode on enabled models, where a lattice layer filters odd and even pixels to both eyes of the user.
+**Top screen** at 800x240 with anisotropic pixels, can either emulate a regular 15:9 400x240 screen, a wide-mode 800x240 with double horizontal pixel density, or a stereoscopy mode on enabled models, where a lattice layer filters odd and even pixels to both eyes of the user.
 
-In the *New* 3DS, the stereoscopy grid is essentially a 1-pixel tall, monochrome display that turns on and off bars that shadow fractions of pixels below.
+In the *New* 3DS, the stereoscopy grid is essentially a 1-pixel tall, monochrome display that turns on and off bars that shadow fractions of pixels below. This allows for adjusting the parallax depending on the head position.
 
 **Bottom screen** is a fixed 320x240 display with a resistive touch-screen layer.
 
