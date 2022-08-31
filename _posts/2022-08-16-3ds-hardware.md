@@ -83,3 +83,5 @@ One analog stick, 2 system buttons, 4 action buttons, 2 shoulder buttons. Standa
 
 # To be continued
 I will update this post with more information as I go, or split it into multiple parts as necessary.
+
+[Read on to the next part, where I introduce the basic app structure.]({% post_url 2022-08-30-3ds-app-loop %})
