@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "Hardware"
-date:   2022-08-12 17:30:00 +0200
+date:   2022-08-16 17:30:00 +0200
 categories: 3ds
 ---
 
