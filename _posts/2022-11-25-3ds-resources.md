@@ -5,7 +5,7 @@ date:   2022-11-25 17:30:00 +0200
 categories: 3ds
 ---
 
-This is part five of the [Nintendo 3DS Homebrew series.]({% post_url 2022-08-12-3ds-intro %})
+This is part four of the [Nintendo 3DS Homebrew series.]({% post_url 2022-08-12-3ds-intro %})
 
 Today I will cover handling files, so we can ship assets such as textures, and save game state.
 
