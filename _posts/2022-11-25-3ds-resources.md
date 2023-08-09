@@ -136,3 +136,5 @@ When dealing with filesystems, you can use additional functionality to inspect d
     	svcCloseHandle(handle);
 	}
 ```
+
+This will do when it comes to data storage. [In the next part, we will start drawing on the screen.]({% post_url 2023-08-07-3ds-2d-rendering %})
