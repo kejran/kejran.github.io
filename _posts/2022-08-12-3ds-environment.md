@@ -81,7 +81,7 @@ Lastly, create a task that will launch the emulator with the built binary. By ad
     "args": [
         "${workspaceFolder}/${workspaceFolderBasename}.3dsx"
     ],
-    "dependsOn": ["make"]
+    "dependsOn": ["make release"]
 }
 ```
 
@@ -89,6 +89,49 @@ Lastly, create a task that will launch the emulator with the built binary. By ad
 After you define tasks, you can access them from `Ctrl+Alt+T` or `Ctrl+Shift+P > Run Tasks`. Find the `run` task and start it. 
 
 By now, you should have a complete setup that allows you to build your code and launch directly to the emulator.
+
+### Adding 3ds includes
+To vscode stop complaining on imports and enable intellisense, you need to add a `c_cpp_properties.json` file. Fill it with something along these lines, make sure to fixup your paths:
+
+```json
+{
+  "configurations": [
+    {
+      "name": "3DS",
+      "includePath": [
+        "${workspaceFolder}",
+        "${workspaceFolder}/build",
+        "C:/devkitPro/libctru/include/**",
+        "C:/devkitPro/devkitARM/arm-none-eabi/include/**"
+      ],
+      "defines": [
+        "_DEBUG",
+        "_UNICODE",
+        "WIN32",
+        "ARM7",
+        "ARM9",
+        "_GNU_SOURCE"
+      ],
+      "browse": {
+        "path": [
+          "${workspaceFolder}",
+          "${workspaceFolder}/include/**",
+          "C:/devkitPro/libctru/include/**",
+          "C:/devkitPro/devkitARM/arm-none-eabi/include/**"
+        ],
+        "limitSymbolsToIncludedHeaders": true,
+        "databaseFilename": ""
+        },
+      "cStandard": "c17",
+      "cppStandard": "c++20",
+      "compilerPath": "C:/devkitPro/devkitARM/bin/arm-none-eabi-g++.exe"
+    }
+  ],
+  "version": 4
+}
+```
+*note to self: this file needs to be udpated to use env variables.*
+
 
 ## Deploying on real hardware
 It is not very exciting to use your Homebrew on an emulator. If you already have a CFW console, you can directly run the compiled `.3dsx` files. 
