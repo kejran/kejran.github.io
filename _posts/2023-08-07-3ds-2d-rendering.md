@@ -135,4 +135,4 @@ Then compile and deploy to the emulator. You should end up with a blank black sc
 
 Utterly gripping results, no doubt. Still, you are now set with a base to expand the game upon. 
 
-In the next section, I will go over importing and drawing images. 
+[In the next section, I will go over importing and drawing images.]({% post_url 2023-08-08-3ds-images %})
