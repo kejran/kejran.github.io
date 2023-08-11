@@ -31,15 +31,15 @@ However, there is a catch: We cannot use all the cores for the app. The core all
 | ID | Usage |
 |----|-------|
 | 1 | Available for application |
-| 2 | System Exclusive |
+| 2 | System Exclusive ( + throttled application use)  |
 | 3 | New: Available for application |
 | 4 | New: System Exclusive (Head tracking) |
 
-A base 3DS can actually ask the OS to yield a 30% timeslice of the second code and create a thread on it. Thus, base 3DS has, practically, 1.3 cores available.
+A base 3DS can ask the OS to yield a 30% timeslice of the second core and create a thread on it. Thus, the base 3DS has, practically, 1.3 worth of cores available, and this allows for true multithreading.
 
-On the new 3DS, the third core is free for application use and enables true multithreading. The app can again ask the OS for a timeslice of the second core, and when running with the increased clock speed, it can actually get more than the original 30% - The reports vary, but even 70/80% seems achievable. Thus, we can assume we actually get around ~2.5 cores on the _New_ system. Given the increased clock speed, we get over 5x increase in raw processing power.
+On the new 3DS, the third core is free for application use and enables true multithreading. The app can again ask the OS for a timeslice of the second core, and when running with the increased clock speed, it can actually get more than the original 30% - The reports vary, but even 70/80% seems achievable. Thus, we can assume we actually get around ~2.5x cores on the _New_ system and three concurrent hardware threads. Given the increased clock speed, we get over 5x increase in raw processing power. 
 
-The fourth core is permanently tied up in *New 3DS*'s head tracking CV process - even when the 3D mode is disabled. Apparently, new Homebrew firmware can actually grant access of the core back to userspace, which means one additional core for multithreading.
+The fourth core is permanently tied up in *New 3DS*'s head tracking CV process - even when the 3D mode is disabled. Apparently, new Homebrew firmware can actually grant access of the core back to userspace, which means one additional core for multithreading. Of course, this means you can no longer use the stereo mode.
 
 Lastly, the original CPU only has L1 cache. *New* models get additional 2 MiB L2 cache.
 
@@ -50,7 +50,7 @@ ARM11 is, by current standards, getting rather long in the tooth. It is the last
 [See the wiki page for memory mapping.](https://www.3dbrew.org/wiki/Memory_layout)
 
 The base 3DS has 128 MiB of **generic RAM**. _New_ version expands it to 256 MiB.
-A portion of it is reserved for system.
+A portion of it is reserved for the OS.
 
 *Note: I will hopefully update this section with exact values when I find some time to write device tests.*
 
@@ -58,7 +58,9 @@ RAM is virtualised. Virtual addresses do not directly correspond to physical mem
 
 To solve this, a section of memory known as **linear memory** is allocated. Linear allocation are guaranteed to be contiguous when seen from the hardware. Thus, bulk data sent to peripherals has to go through the linear memory.
 
-The last memory type of interest is the **VRAM**. This is the area where data commonly used by the GPU lives, such as framebuffers and textures. 3DS has a rather lacking amount of dedicated VRAM, somewhat made up by being able to put data in linear memory. Base 3DS has two banks of 3 MiB each, for 6 MiB total - which is available for app use. *Warning: My wild unconfirmed conjecture follows.* As for *New* consoles, additional 4 MiB of "VRAM" is added. However, from what I gather, either none or half of it is available for games (Homebrew might be able to bypass it, although it is not directly possible through `libctru`), as it is/might be used for the head tracking CV. [Read more here.](https://www.3dbrew.org/wiki/Memory_layout#0x1F000000_(New_3DS_only))
+The last memory type of interest is the **VRAM**. This is the area where data commonly used by the GPU lives, such as framebuffers and textures. The 3DS has a rather lacking amount of dedicated VRAM, which is somewhat compensated by being able to put non-texture data in the linear memory. Base 3DS has two banks of 3 MiB each, for 6 MiB total - which is available for app use. 
+
+*Warning: My wild unconfirmed conjecture follows.* As for *New* consoles, additional 4 MiB of "VRAM" is added. However, from what I gather, either none or half of it is available for games (Homebrew might be able to bypass it, although it is not directly possible through `libctru`), as it is/might be used for the head tracking CV. [Read more here.](https://www.3dbrew.org/wiki/Memory_layout#0x1F000000_(New_3DS_only))
 
 Additionally, apps can get access to the **SD card** to operate on arbitrary files there. However, compile-time / read-only files can be baked directly into the binary and exposed as a virtual file system.
 
@@ -79,9 +81,12 @@ One analog stick, 2 system buttons, 4 action buttons, 2 shoulder buttons. Standa
 
 *New* 3DS adds another analog stick, and another two shoulder buttons.
 
-3DS has an internal IMU (Accelerometer + Gyro). Apparently.
+3DS has an internal IMU (Accelerometer + Gyro). No magnetometer.
+
+# IR module
+Not frequently used, an onboard IR module allows for bidirectional data exchange with a second console, or a peripheral.
 
 # To be continued
-I will update this post with more information as I go, or split it into multiple parts as necessary.
+I will update this post with more information as I go.
 
-[Read on to the next part, where I introduce the basic app structure.]({% post_url 2022-08-30-3ds-app-loop %})
+[Now, read on to the next part, where I introduce the basic app structure.]({% post_url 2022-08-30-3ds-app-loop %})
